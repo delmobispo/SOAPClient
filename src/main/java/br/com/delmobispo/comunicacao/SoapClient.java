@@ -1,4 +1,4 @@
-package br.com.bbtur.correios;
+package br.com.delmobispo.comunicacao;
 
 import java.io.IOException;
 import java.util.Iterator;
@@ -37,7 +37,7 @@ public class SoapClient {
      * {@link https://docs.oracle.com/javaee/5/tutorial/doc/bnbhg.html}
      * <br>
      * <br>
-     * Exemplo montagem da mensagem SOAP:
+     * Exemplo montagem da mensagem SOAP usando o webservice dos correios:
      * <br>
      * <br>
      * <code>

@@ -1,4 +1,4 @@
-package br.com.bbtur.correios;
+package br.com.delmobispo.comunicacao;
 
 import javax.xml.soap.MessageFactory;
 import javax.xml.soap.SOAPBody;
