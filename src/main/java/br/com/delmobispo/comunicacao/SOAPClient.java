@@ -10,7 +10,7 @@ import javax.xml.soap.SOAPConnectionFactory;
 import javax.xml.soap.SOAPException;
 import javax.xml.soap.SOAPMessage;
 
-public class SoapClient {
+public class SOAPClient {
 	
 	private String soapEndpointUrl;
     private String soapAction;
@@ -18,17 +18,17 @@ public class SoapClient {
     private SOAPMessage soapRequest;
     private SOAPMessage soapResponse;
     
-    public SoapClient(String soapEndpointUrl) {
+    public SOAPClient(String soapEndpointUrl) {
     	this(soapEndpointUrl, "");
 	}
     
-    public SoapClient(String soapEndpointUrl, String soapAction) {
+    public SOAPClient(String soapEndpointUrl, String soapAction) {
     	setSoapEndpointUrl(soapEndpointUrl);
     	setSoapAction(soapAction);
     	debug(true);
 	}
     
-    public SoapClient debug(boolean debug) {
+    public SOAPClient debug(boolean debug) {
     	this.debug = debug;
     	return this;
     }
@@ -51,11 +51,11 @@ public class SoapClient {
      * soapBodyElem.addChildElement("cep").addTextNode("73368470");
      * </code>
      * @param soapRequest
-     * @return {@link SoapClient}
+     * @return {@link SOAPClient}
      * @throws SOAPException
      * @throws IOException
      */
-    public SoapClient request(SOAPMessage soapRequest) throws SOAPException, IOException {
+    public SOAPClient request(SOAPMessage soapRequest) throws SOAPException, IOException {
     	MimeHeaders headers = soapRequest.getMimeHeaders();
         headers.addHeader("SOAPAction", getSoapAction());
         soapRequest.saveChanges();
@@ -71,7 +71,7 @@ public class SoapClient {
     	return this;
     }
     
-    public SoapClient send() throws UnsupportedOperationException, SOAPException, IOException {
+    public SOAPClient send() throws UnsupportedOperationException, SOAPException, IOException {
         SOAPConnectionFactory soapConnectionFactory = SOAPConnectionFactory.newInstance();
         SOAPConnection soapConnection = soapConnectionFactory.createConnection();
         
