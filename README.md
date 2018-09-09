@@ -1,6 +1,6 @@
 # Exemplo de Uso da classe
 
-´´´ java
+```java
 
 public class SOAPCorreiosClient {
 	
@@ -28,4 +28,4 @@ public class SOAPCorreiosClient {
 
 	}	
 }
-´´´
+```
