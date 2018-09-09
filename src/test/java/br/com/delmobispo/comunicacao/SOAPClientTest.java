@@ -16,7 +16,7 @@ public class SOAPClientTest {
 	public void integracaoBasica() {
 		SOAPClient client = new SOAPClient(
 				"https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente"
-				).debug(true);
+				).debug(false);
 		try {
 			MessageFactory messageFactory = MessageFactory.newInstance();
 	        SOAPMessage soapRequest = messageFactory.createMessage();
@@ -30,7 +30,27 @@ public class SOAPClientTest {
 			Assert.assertEquals(client.response() != null, true);
 		}catch (Exception exc) {
 			exc.printStackTrace();
-			Assert.assertEquals(true, false);
+		}
+	}
+	
+	@Test
+	public void integracaoFalha() {
+		SOAPClient client = new SOAPClient(
+				"https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente"
+				).debug(false);
+		try {
+			MessageFactory messageFactory = MessageFactory.newInstance();
+	        SOAPMessage soapRequest = messageFactory.createMessage();
+	        SOAPPart soapPart = soapRequest.getSOAPPart();
+	        SOAPEnvelope envelope = soapPart.getEnvelope();
+	        envelope.addNamespaceDeclaration("cli", "http://cliente.bean.master.sigep.bsb.correios.com.br/");
+	        SOAPBody soapBody = envelope.getBody();
+	        SOAPElement soapBodyElem = soapBody.addChildElement("consultaCEP", "cli");
+	        soapBodyElem.addChildElement("cep").addTextNode("73366754");
+			client.request(soapRequest).send();
+		}catch (Exception exc) {
+			Assert.assertEquals(client.response() != null, true);
+			//exc.printStackTrace();
 		}
 	}
 	
