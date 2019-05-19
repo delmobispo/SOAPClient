@@ -47,7 +47,8 @@ public class SOAPClientTest {
 	        SOAPBody soapBody = envelope.getBody();
 	        SOAPElement soapBodyElem = soapBody.addChildElement("consultaCEP", "cli");
 	        soapBodyElem.addChildElement("cep").addTextNode("73366754");
-			client.request(soapRequest).send();
+	        SOAPMessage response = client.request(soapRequest).send().response();
+		
 		}catch (Exception exc) {
 			Assert.assertEquals(client.response() != null, true);
 			//exc.printStackTrace();

@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/delmobispo/SOAPClient.svg?branch=master)](https://travis-ci.org/delmobispo/SOAPClient)
+
 # Exemplo de Uso da classe
 
 ```java
